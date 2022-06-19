@@ -18,7 +18,7 @@ const keystone = new Keystone({
   //cookie: {
   //  secure: true,
   //},
-  secureCookies: false,
+  secureCookies: true,
   sessionStore: process.env.SESSION_SECRET,
   cookieSecret: process.env.COOKIESECRET,
 
@@ -95,4 +95,11 @@ module.exports = {
       authStrategy,
     }),
   ],
+  configureExpress: (app) => {
+    app.set("trust proxy", 1);
+    // app.use(cors({
+    //   credentials: "include",
+    //   origin:process.env.BACKEND_URL
+    // }))
+  },
 };
