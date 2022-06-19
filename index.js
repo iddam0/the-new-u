@@ -4,10 +4,12 @@ const { Text, Checkbox, Password } = require('@keystonejs/fields');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const initialiseData = require('./initial-data');
+const { User, Post, PostCategory, Comment } = require('./schema');
+const { staticRoute, staticPath, distDir } = require('./config');
 
 const { KnexAdapter: Adapter } = require('@keystonejs/adapter-knex');
 const PROJECT_NAME = 'the-u';
-const adapterConfig = { knexOptions: { connection: 'postgres://postgres:@Lotion1201475369@db.iqfymgqfqfkwxdtgziep.supabase.co:6543/postgres' } };
+const adapterConfig = { knexOptions: { dropDatabase: true, connection: 'postgres://postgres:@Lotion1201475369@db.iqfymgqfqfkwxdtgziep.supabase.co:6543/postgres' } };
 
 
 const keystone = new Keystone({
@@ -54,6 +56,7 @@ keystone.createList('User', {
       type: Password,
     },
   },
+  
   // List-level access controls
   access: {
     read: access.userIsAdminOrOwner,
@@ -63,6 +66,9 @@ keystone.createList('User', {
     auth: true,
   },
 });
+keystone.createList('Post', Post);
+keystone.createList('PostCategory', PostCategory);
+keystone.createList('Comment', Comment);
 
 const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
@@ -77,6 +83,8 @@ module.exports = {
     new AdminUIApp({
       name: PROJECT_NAME,
       enableDefaultRoute: true,
+      adminPath: '/admin',
+      hooks: require.resolve('./admin/'),
       authStrategy,
     }),
   ],
