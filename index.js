@@ -15,6 +15,11 @@ const adapterConfig = { knexOptions: { dropDatabase: true, connection: 'postgres
 const keystone = new Keystone({
   adapter: new Adapter(adapterConfig),
   onConnect: process.env.CREATE_TABLES !== 'true' && initialiseData,
+  cookie: {
+    secure: true,
+  },
+  cookieSecret: process.env.COOKIESECRET,
+
 });
 
 // Access control functions
