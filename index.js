@@ -18,6 +18,7 @@ const keystone = new Keystone({
   cookie: {
     secure: true,
   },
+  secureCookies: false,
   sessionStore: process.env.SESSION_SECRET,
   cookieSecret: process.env.COOKIESECRET,
 
