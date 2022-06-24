@@ -20,6 +20,10 @@ export default {
         { label: 'Sites', listKey: 'PostCategory' },
         { listKey: 'Comment' },
       ],
+      options: [
+        { label: 'Draft', value: 'draft' },
+        { label: 'Published', value: 'published' },
+      ],
     },
     {
         label: 'E-commerce',

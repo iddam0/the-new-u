@@ -8,13 +8,14 @@
   "homepage": "https://github.com/keystonejs/keystone-5",
   "license": "MIT",
   "engines": {
-    "node": "14.x.x"
+    "node": "16.x.x"
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development DISABLE_LOGGING=true ENABLE_DEV_FEATURES=false keystone dev",
     "build": "cross-env NODE_ENV=production keystone build",
     "start": "cross-env NODE_ENV=production keystone start",
-    "create-tables": "cross-env CREATE_TABLES=true keystone create-tables"
+    "create-tables": "cross-env CREATE_TABLES=true keystone create-tables",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@keystonejs/adapter-knex": "^13.3.2",
@@ -27,6 +28,8 @@
     "@keystonejs/fields-wysiwyg-tinymce": "^5.4.2",
     "@keystonejs/file-adapters": "^7.1.2",
     "@keystonejs/keystone": "^19.3.3",
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0"
   }
 }
