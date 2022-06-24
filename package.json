@@ -14,8 +14,6 @@
     "dev": "cross-env NODE_ENV=development DISABLE_LOGGING=true ENABLE_DEV_FEATURES=false keystone dev",
     "build": "cross-env NODE_ENV=production keystone build",
     "start": "cross-env NODE_ENV=production keystone start",
-    "heroku-postbuild": "patch-package",
-    "heroku-cleanup": "patch-package",
     "create-tables": "cross-env CREATE_TABLES=true keystone create-tables"
   },
   "dependencies": {
