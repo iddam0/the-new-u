@@ -1,0 +1,63 @@
+diff --git a/node_modules/@keystonejs/app-admin-ui/client/components/Nav.js b/node_modules/@keystonejs/app-admin-ui/client/components/Nav.js
+index 8b70b02..28594b4 100644
+--- a/node_modules/@keystonejs/app-admin-ui/client/components/Nav.js
++++ b/node_modules/@keystonejs/app-admin-ui/client/components/Nav.js
+@@ -169,11 +169,17 @@ function renderChildren(
+   if (node.children) {
+     const groupKey = uid(node.children);
+     depth += 1;
++    const [isOpen, setIsOpen] = useState(true);
++
++  const handleFilterOpening = () => {
++    setIsOpen((prev) => !prev);
++  };
+ 
+     return (
+       <React.Fragment key={groupKey}>
+-        {node.label && <PrimaryNavHeading depth={depth}>{node.label}</PrimaryNavHeading>}
+-        {node.children.map(child =>
++        {node.label && <PrimaryNavHeading onClick={handleFilterOpening} depth={depth}>{node.label}</PrimaryNavHeading>}
++        {!isOpen ? (
++        node.children.map(child =>
+           renderChildren(
+             child,
+             authListKey,
+@@ -183,6 +189,8 @@ function renderChildren(
+             depth,
+             onRenderIndexPage
+           )
++        )
++        ) : (''
+         )}
+       </React.Fragment>
+     );
+@@ -218,7 +226,11 @@ function renderChildren(
+   const label = node.label || list.plural;
+   const isSelected = list.fullPath === getPath(location.pathname);
+   const id = `ks-nav-${list.path}`;
+-
++  function go (prop){
++    console.log(prop.props.children[0])
++    let opt = (<div class="content" style={{"display": "block"}}>{prop.props.children[0]}</div>)
++  return opt
++  }
+   return (
+     <PrimaryNavItem
+       key={key}
+@@ -227,13 +239,14 @@ function renderChildren(
+       isSelected={isSelected}
+       to={list.getFullPersistentPath()}
+       mouseIsOverNav={mouseIsOverNav}
++      style={{"display": "block"}}
+     >
+       {label}
+       {key === authListKey ? (
+         <PersonIcon title={label} color={colors.N20} css={{ paddingLeft: 8, paddingTop: 4 }} />
+       ) : null}
+-    </PrimaryNavItem>
+-  );
++    </PrimaryNavItem>)
++  ;
+ }
+ 
+ function PrimaryNavItems({
