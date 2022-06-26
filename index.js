@@ -94,7 +94,7 @@ module.exports = {
       enableDefaultRoute: true,
       adminPath: '/admin',
       hooks: require.resolve('./admin/'),
-      //authStrategy,
+      authStrategy,
     }),
   ],
   configureExpress: (app) => {
