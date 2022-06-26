@@ -4,7 +4,7 @@ const { Text, Checkbox, Password } = require('@keystonejs/fields');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const initialiseData = require('./initial-data');
-const { User, Post, PostCategory, Comment } = require('./schema');
+const { User, Post, PostCategory, Comment, style_test } = require('./schema');
 const { staticRoute, staticPath, distDir } = require('./config');
 
 const { KnexAdapter: Adapter } = require('@keystonejs/adapter-knex');
@@ -76,6 +76,8 @@ keystone.createList('User', {
 keystone.createList('Post', Post);
 keystone.createList('PostCategory', PostCategory);
 keystone.createList('Comment', Comment);
+keystone.createList('style_test', style_test);
+
 
 const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
@@ -92,7 +94,7 @@ module.exports = {
       enableDefaultRoute: true,
       adminPath: '/admin',
       hooks: require.resolve('./admin/'),
-      authStrategy,
+      //authStrategy,
     }),
   ],
   configureExpress: (app) => {

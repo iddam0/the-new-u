@@ -34,7 +34,7 @@ export default {
     {
         label: 'Themes',
         children: [
-          { label: 'Palletes', listKey: 'Post' },
+          { label: 'Palletes', listKey: 'style_test' },
           { label: 'Address', listKey: 'PostCategory' },
           { listKey: 'Comment' },
         ],

@@ -10,6 +10,7 @@ const {
   CalendarDay,
   DateTime,
 } = require('@keystonejs/fields');
+const { Color } = require('@keystonejs/fields-color');
 const { OEmbed, IframelyOEmbedAdapter } = require('@keystonejs/fields-oembed');
 const { Wysiwyg } = require('@keystonejs/fields-wysiwyg-tinymce');
 const { AuthedRelationship } = require('@keystonejs/fields-authed-relationship');
@@ -122,7 +123,12 @@ exports.PostCategory = {
     slug: { type: Slug, from: 'name' },
   },
 };
-
+exports.style_test = {
+  fields: {
+    name: { type: Text },
+    color: { type: Select, options: 'ccd5ae, e9edc9,fefae0,faedcd,d4a373' },
+  },
+};
 exports.Comment = {
   fields: {
     body: { type: Text, isMultiline: true },
