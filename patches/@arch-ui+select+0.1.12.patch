@@ -1,0 +1,76 @@
+diff --git a/node_modules/@arch-ui/select/dist/select.cjs.dev.js b/node_modules/@arch-ui/select/dist/select.cjs.dev.js
+index 065abcb..93fb76b 100644
+--- a/node_modules/@arch-ui/select/dist/select.cjs.dev.js
++++ b/node_modules/@arch-ui/select/dist/select.cjs.dev.js
+@@ -6,7 +6,7 @@ var _extends = require('@babel/runtime/helpers/extends');
+ var _objectWithoutProperties = require('@babel/runtime/helpers/objectWithoutProperties');
+ var _objectSpread = require('@babel/runtime/helpers/objectSpread2');
+ var React = require('react');
+-var BaseSelect = require('react-select');
++var BaseSelect = require('react-select-color');
+ var AsyncCreatableSelect = require('react-select/async-creatable');
+ var AsyncSelect = require('react-select/async');
+ var CreatableSelect = require('react-select/creatable');
+diff --git a/node_modules/@arch-ui/select/dist/select.cjs.prod.js b/node_modules/@arch-ui/select/dist/select.cjs.prod.js
+index 065abcb..93fb76b 100644
+--- a/node_modules/@arch-ui/select/dist/select.cjs.prod.js
++++ b/node_modules/@arch-ui/select/dist/select.cjs.prod.js
+@@ -6,7 +6,7 @@ var _extends = require('@babel/runtime/helpers/extends');
+ var _objectWithoutProperties = require('@babel/runtime/helpers/objectWithoutProperties');
+ var _objectSpread = require('@babel/runtime/helpers/objectSpread2');
+ var React = require('react');
+-var BaseSelect = require('react-select');
++var BaseSelect = require('react-select-color');
+ var AsyncCreatableSelect = require('react-select/async-creatable');
+ var AsyncSelect = require('react-select/async');
+ var CreatableSelect = require('react-select/creatable');
+diff --git a/node_modules/@arch-ui/select/dist/select.esm.js b/node_modules/@arch-ui/select/dist/select.esm.js
+index 28a25c6..9e5a682 100644
+--- a/node_modules/@arch-ui/select/dist/select.esm.js
++++ b/node_modules/@arch-ui/select/dist/select.esm.js
+@@ -2,7 +2,7 @@ import _extends from '@babel/runtime/helpers/esm/extends';
+ import _objectWithoutProperties from '@babel/runtime/helpers/esm/objectWithoutProperties';
+ import _objectSpread from '@babel/runtime/helpers/esm/objectSpread2';
+ import { createElement, useMemo } from 'react';
+-import BaseSelect from 'react-select';
++import BaseSelect from 'react-select-color';
+ import AsyncCreatableSelect from 'react-select/async-creatable';
+ import AsyncSelect from 'react-select/async';
+ import CreatableSelect from 'react-select/creatable';
+@@ -41,6 +41,7 @@ const selectStyles = {
+   control: (provided, {
+     isFocused
+   }) => {
++    
+     const focusStyles = isFocused ? {
+       borderColor: colors.primary,
+       boxShadow: `inset 0 1px 1px rgba(0, 0, 0, 0.075),
+@@ -69,6 +70,7 @@ const selectStyles = {
+     isFocused,
+     isSelected
+   }) => {
++
+     let bg = 'inherit';
+     if (isFocused) bg = colors.B.L90;
+     if (isSelected) bg = colors.primary;
+@@ -119,7 +121,7 @@ const Select = (_ref) => {
+     styles
+   } = _ref,
+       props = _objectWithoutProperties(_ref, ["isAsync", "isCreatable", "innerRef", "styles"]);
+-
++console.log(props)
+   const ReactSelect = getSelectVariant({
+     isAsync,
+     isCreatable
+diff --git a/node_modules/@arch-ui/select/src/index.js b/node_modules/@arch-ui/select/src/index.js
+index 51b8307..5e63d8d 100644
+--- a/node_modules/@arch-ui/select/src/index.js
++++ b/node_modules/@arch-ui/select/src/index.js
+@@ -1,6 +1,6 @@
+ import * as React from 'react';
+ import { useMemo } from 'react';
+-import BaseSelect from 'react-select';
++import BaseSelect from 'react-select-color';
+ import AsyncCreatableSelect from 'react-select/async-creatable';
+ import AsyncSelect from 'react-select/async';
+ import CreatableSelect from 'react-select/creatable';
